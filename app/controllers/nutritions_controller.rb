@@ -70,6 +70,6 @@ class NutritionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nutrition_params
-      params.require(:nutrition).permit(:name, :calorie, :fat, :food_name, :cusine)
+      params.require(:nutrition).permit(:name, :calorie, :fat, :food_name, :cusine, :allergy)
     end
 end
