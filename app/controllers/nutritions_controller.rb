@@ -11,6 +11,10 @@ class NutritionsController < ApplicationController
   # GET /nutritions/1
   # GET /nutritions/1.json
   def show
+    respond_to do |format|
+        format.html { }
+        format.json { render json: {data: @nutrition.as_json} }
+    end
   end
 
   # GET /nutritions/new
