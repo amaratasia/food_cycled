@@ -20,7 +20,7 @@ before_action :authenticate_user!
 
   def update_status
     food_order = FoodOrder.find(params[:id])
-    food_order.update_attributes({status:5, picked_by:2})
+    food_order.update_attributes({status:5, picked_by: current_user.id})
     return render json: {data: food_order.as_json}, status: 200
   end
 
