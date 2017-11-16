@@ -13,7 +13,15 @@ before_action :authenticate_user!
 
   # GET /food_orders/1
   # GET /food_orders/1.json
-  def show
+  def history
+    food_orders = FoodOrder.where(picked_by: current_user.id)
+    return render json: {data: food_orders.as_json}, status: 200
+  end
+
+  def update_status
+    food_order = FoodOrder.find(params[:id])
+    food_order.update_attributes({status:5, picked_by:2})
+    return render json: {data: food_order.as_json}, status: 200
   end
 
   # GET /food_orders/new
