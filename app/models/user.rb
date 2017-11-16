@@ -15,4 +15,12 @@ class User < ApplicationRecord
 		self.save
 		return self.token
 	end	
+
+  def user?
+    self.role == 1 
+  end
+  def volunteer?
+    self.role == 2
+  end
+
 end

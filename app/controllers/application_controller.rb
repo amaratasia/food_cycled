@@ -9,11 +9,10 @@ class ApplicationController < ActionController::Base
   	if (params[:emaill].present? && params[:passwordd].present?)
   		user = User.find_by_email(params[:emaill])
 	  	sign_in user if user.valid_password? params[:password]
-	elsif params[:token]
-		user = User.find_by_token(params[:token])
-		sign_in user
-	end
-  	puts current_user
+  	elsif params[:token]
+  		user = User.find_by_token(params[:token])
+  		sign_in user
+  	end
   end
 
   protected
