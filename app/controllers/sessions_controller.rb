@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 	def signin
 		if (params[:email].present? && params[:password].present?)
   			user = User.find_by_email(params[:email])
-  			return render json: {}, status: 401 if user.blank?
+  			return render json: {status: 'fail'} if user.blank?
   			# raise 'amar'
   			if user.valid_password? params[:password]
 	  			sign_in user
