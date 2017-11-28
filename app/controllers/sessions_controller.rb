@@ -7,12 +7,12 @@ class SessionsController < ApplicationController
   			# raise 'amar'
   			if user.valid_password? params[:password]
 	  			sign_in user
-	  			return render json: {token: user.regenerate_token, user: user}, donot_track: true  
+	  			return render json: {status: 'success', token: user.regenerate_token, user: user}, donot_track: true  
 	  		else
-	  			return render json: {}, status: 401
+	  			return render json: {status: 'fail'}
 	  		end
 	  	end
-	  	return render json: {}, status: 401
+	  	return render json: {status: 'fail'}
 	end
 
 	def signUP
