@@ -8,11 +8,11 @@ class ApplicationController < ActionController::Base
   	current_user ||= nil
   	if (params[:emaill].present? && params[:passwordd].present?)
   		user = User.find_by_email(params[:emaill])
-      return render json: {}, status: 401 if user.blank?
+      return render json: {status: 'fail'} if user.blank?
 	  	sign_in user if user.valid_password? params[:password]
   	elsif params[:token]
   		user = User.find_by_token(params[:token])
-      return render json: {}, status: 401 if user.blank?
+      return render json: {status: 'fail'} if user.blank?
   		sign_in user
   	end
   end
