@@ -20,6 +20,6 @@ class SessionsController < ApplicationController
 	end
 
 	def session_params
-		params.permit(:email, :password, :phone, :address, :house, :code, :role)
+		params.permit(:email, :password, :phone, :address, :code, :role)
 	end
 end
