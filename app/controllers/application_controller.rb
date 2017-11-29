@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
       return render json: {status: 'fail'} if user.blank?
 	  	sign_in user if user.valid_password? params[:password]
   	elsif params[:token]
-  		user = User.find_by_token(params[:token])
+  		user = User.find_by_token_and_role(params[:token], params[:role])
       return render json: {status: 'fail'} if user.blank?
   		sign_in user
   	end
