@@ -14,7 +14,11 @@ before_action :authenticate_user!
   # GET /food_orders/1
   # GET /food_orders/1.json
   def history
-    food_orders = FoodOrder.where(picked_by: current_user.id)
+    food_orders = FoodOrder.unscoped.where(picked_by: current_user.id)
+    return render json: {data: food_orders.as_json}, status: 200
+  end
+  def user_history
+    food_orders = FoodOrder.unscoped.where(user_id: current_user.id)
     return render json: {data: food_orders.as_json}, status: 200
   end
 

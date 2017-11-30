@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :food_orders do 
   	get :history, :on => :collection
   	get :update_status, :on => :member
+  	get :user_history, :on => :collection
   end
   resources :nutritions
 	devise_for :users
