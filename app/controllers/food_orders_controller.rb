@@ -77,6 +77,6 @@ before_action :authenticate_user!
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_order_params
       params[:food_order][:user_id] = current_user.try(:id) || 1
-      params.require(:food_order).permit(:user_id, :food_name, :status, :picked_by, :image_url)
+      params.require(:food_order).permit(:user_id, :food_name, :status, :picked_by, :image_url, :prep_date, :expiry_date, :spice_value)
     end
 end
