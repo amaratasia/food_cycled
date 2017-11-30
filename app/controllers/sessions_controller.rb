@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
 	skip_before_action :authenticate_user!, :authenticate_with_token
 	def signin
-		if (params[:email].present? && params[:password].present?)
-  			user = User.find_by_email(params[:email])
+		if (params[:email].present? && params[:password].present? && params[:role].present?)
+  			user = User.find_by_email_and_role(params[:email], params[:role])
   			return render json: {status: 'fail'} if user.blank?
   			# raise 'amar'
   			if user.valid_password? params[:password]
